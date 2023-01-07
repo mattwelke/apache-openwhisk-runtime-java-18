@@ -1,13 +1,11 @@
 # Build app using Gradle
-FROM gradle:7.4.2-jdk18 AS app-build
-ARG gpr_user
-ARG gpr_key
+FROM gradle:7.5.1-jdk18 AS app-build
 WORKDIR /app
-COPY  settings.gradle build.gradle ./
+COPY settings.gradle build.gradle ./
 # Found this was the only way to copy in the src directory for some reason.
 RUN mkdir src
 COPY src ./src
-RUN gradle -Pgpr.user=$gpr_user -Pgpr.key=$gpr_key build
+RUN gradle
 
 
 # Copy app in from builder into image for production

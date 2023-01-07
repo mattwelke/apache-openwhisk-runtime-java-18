@@ -8,18 +8,23 @@ repositories {
     maven {
         url = uri('https://repo.maven.apache.org/maven2/')
     }
-    maven {
-        url = uri("https://maven.pkg.github.com/mattwelke/openwhisk-runtime-java-api")
-        credentials {
-            username = project.findProperty("gpr.user") ?: System.getenv("GPR_USERNAME")
-            password = project.findProperty("gpr.key") ?: System.getenv("GPR_TOKEN")
-        }
-    }
 }
 
 dependencies {
+    // Needed for OpenWhisk
     implementation 'com.google.code.gson:gson:2.10'
-    implementation 'com.mattwelke.owr.java:openwhisk-runtime-java-api:1.0.0'
+
+    // Extra deps provided so actions don't need to provide them
+    // GCP
+    implementation platform('com.google.cloud:libraries-bom:26.2.0')
+    implementation 'com.google.cloud:google-cloud-bigquery'
+    implementation 'com.google.cloud:google-cloud-pubsub'
+    implementation 'com.google.cloud:google-cloud-scheduler'
+    implementation 'com.google.cloud:google-cloud-secretmanager'
+    implementation 'com.google.cloud:google-cloud-storage'
+    implementation 'com.google.cloud:google-cloud-tasks'
+    implementation 'com.google.cloud:google-cloud-logging'
+    implementation 'com.google.cloud:google-cloud-firestore'
 }
 
 group = 'com.mattwelke.owr.java18'
