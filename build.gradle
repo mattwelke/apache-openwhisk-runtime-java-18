@@ -11,20 +11,11 @@ repositories {
 }
 
 dependencies {
-    // Needed for OpenWhisk
-    implementation 'com.google.code.gson:gson:2.10'
+    // Extra dedependencies provided so actions don't need to provide them:
 
-    // Extra deps provided so actions don't need to provide them
-    // GCP
+    // https://github.com/googleapis/java-bigquery
     implementation platform('com.google.cloud:libraries-bom:26.2.0')
     implementation 'com.google.cloud:google-cloud-bigquery'
-    implementation 'com.google.cloud:google-cloud-pubsub'
-    implementation 'com.google.cloud:google-cloud-scheduler'
-    implementation 'com.google.cloud:google-cloud-secretmanager'
-    implementation 'com.google.cloud:google-cloud-storage'
-    implementation 'com.google.cloud:google-cloud-tasks'
-    implementation 'com.google.cloud:google-cloud-logging'
-    implementation 'com.google.cloud:google-cloud-firestore'
 }
 
 group = 'com.mattwelke.owr.java18'

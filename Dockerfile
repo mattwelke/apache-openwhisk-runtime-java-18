@@ -5,7 +5,7 @@ COPY settings.gradle build.gradle ./
 # Found this was the only way to copy in the src directory for some reason.
 RUN mkdir src
 COPY src ./src
-RUN gradle
+RUN gradle build
 
 
 # Copy app in from builder into image for production
