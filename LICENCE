@@ -1,4 +1,3 @@
-
                                  Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
@@ -187,7 +186,7 @@
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2022 Matt Welke, the authors of https://github.com/apache/openwhisk-runtime-java
+   Copyright 2023 Matt Welke
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -200,3 +199,13 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+
+   ==========================================================================
+
+   Contains some code from The Apache Software Foundation. That code, when
+   used as is, retains the Apache header in each file and is copyright
+   The Apache Software Foundation. That code, when modified for use in this
+   project, does not retain the Apache header in each file and instead, the
+   code in the upstream projects should be consulted for more detail, with
+   the original version of the code before the modifications made in this
+   project being copyright The Apache Software Foundation.
