@@ -2,8 +2,6 @@ package com.mattwelke.owr.java;
 
 import java.util.Map;
 
-import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
-
 /**
  * Parent class of all OpenWhisk Java action implementations. OpenWhisk users extend this class and override the invoke
  * method to implement their actions.
