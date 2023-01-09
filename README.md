@@ -47,20 +47,34 @@ When this plugin is added this way, the result of running `./gradlew build` will
 
 ## Creating your function
 
-Create a class that extends `Action` and implements the `invoke` method to be the class for your function. You can call it anything you like. For example:
+Create a class that extends `Action` and implements the `invoke` method to be the class for your function. You can call it anything you like.
+
+This example demonstrates using the invoke input, using data from the cluster context (which replaces the OpenWhisk per-invoke environment variables in the Java 8 runtime), and setting output.
 
 ```java
 package com.myfunc;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import com.mattwelke.owr.java.Action;
 
+public class MyAction extends Action {
 
-public class MyFunction extends Action {
+    private static final Logger LOG = Logger.getAnonymousLogger();
+
     @Override
-    public Map<String, Object> invoke(Map<String, Object> params) {
-        return new Map<String, Object>();
+    public Map<String, Object> invoke(Map<String, Object> input) {
+        LOG.info("Input: " + input);
+        LOG.info("Context: " + this.clusterContext);
+
+        var output = new HashMap<String, Object>();
+
+        output.put("input", input);
+        output.put("context", this.clusterContext);
+
+        return output;
     }
 }
 ```
@@ -81,14 +95,12 @@ RESOURCE_GROUP="<resource_group>"
 FUNCTIONS_NAMESPACE="<functions_namespace>"
 ACTION_NAME="my-function"
 
-BUILD_DIR="build"
-JAR_PATH="${BUILD_DIR}/libs/$ACTION_NAME-all.jar"
+BUILD_DIR="lib/build"
+JAR_PATH="${BUILD_DIR}/libs/lib-all.jar"
 
 rm -r $BUILD_DIR 2> /dev/null
 
-./gradlew "$ACTION_NAME:shadowJar"
-
-ibmcloud login --apikey $IBM_CLOUD_API_KEY
+./gradlew "shadowJar"
 
 ibmcloud target -r $REGION
 ibmcloud target -g $RESOURCE_GROUP
