@@ -7,3 +7,5 @@ dependency-reduced-pom.xml
 target
 bin
 build
+
+.gradle/
