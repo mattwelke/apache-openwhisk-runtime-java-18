@@ -1,5 +1,7 @@
 # apache-openwhisk-runtime-java-18
 
+*Archived in favor of https://github.com/mattwelke/apache-openwhisk-runtime-java-19 on Feb 17, 2023.*
+
 A Java 18 runtime or Apache OpenWhisk. Derived from https://github.com/mattwelke/apache-openwhisk-runtime-java-17. Has been used in production in a hobby project long enough to be considered production ready.
 
 Contains some changes compared to the Java runtimes in the Apache OpenWhisk project:
